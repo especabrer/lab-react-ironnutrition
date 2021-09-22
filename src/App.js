@@ -28,13 +28,22 @@ function App() {
     setFoodsListPrint(filteredFood);
   }
 
+  const clickToDelete = (name) => {
+    let copyFoodsList = foodsList
+
+    let updateList = copyFoodsList.filter(food => food.name !== name)
+    console.log("updateListDelete : ", updateList)
+    setFoodsList(updateList)
+    setFoodsListPrint(updateList)
+  }
+
   return (
 
     <div className="App">
     <AddFoodForm addNewFood={addNewFood}/>
     <SearchFood searchFood={searchFoodFunc}/>
      {foodsListPrint.map((foodsList)=> (
-        <FoodBox foodsList={foodsList}/>
+        <FoodBox foodsList={foodsList} clickToDelete={clickToDelete}/>
      ))}
     
    
