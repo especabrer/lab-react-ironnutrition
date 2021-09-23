@@ -22,15 +22,14 @@ function App() {
   const searchFoodFunc = (searchLetters) => {
    
     let newFoodsList = foodsList
-
-    let filteredFood = newFoodsList.filter(food => food.name.startsWith(searchLetters) )
+    let filteredFood = newFoodsList.filter(food => food.name.toLowerCase().includes(searchLetters.toLowerCase()) )
 
     setFoodsListPrint(filteredFood);
   }
 
   const clickToDelete = (name) => {
+    
     let copyFoodsList = foodsList
-
     let updateList = copyFoodsList.filter(food => food.name !== name)
     console.log("updateListDelete : ", updateList)
     setFoodsList(updateList)
@@ -45,11 +44,6 @@ function App() {
      {foodsListPrint.map((foodsList)=> (
         <FoodBox foodsList={foodsList} clickToDelete={clickToDelete}/>
      ))}
-    
-   
-     
-
-
     </div>
   );
 }
